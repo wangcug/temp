@@ -1,936 +1,344 @@
-<!doctype html> 
-<head> 
-  <title>Browsing GSSP information on Map</title> 
-  <meta charset="utf-8">  
-  
-  <!-- sytle for lightbox - for popup images -->  
-  <link href="style/lightbox.css" rel="stylesheet" />
-  
-  <style type='text/css'> 
-    body {
-      font-family:helvetica, arial, sans-serif;
-    }
-    
-    table {
-      border-collapse:collapse;  
-      margin-top:20px;
-    }
-    table,th,td{
-      border: 1px solid #CCC;
-    } 
-    td {
-      padding:3px;
-    }
-  </style> 
-  <link href="./style/wheel.css" rel="stylesheet"> 
-<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/D993DA47-B7E1-0A43-8485-F62A343F1C47/main.js" charset="UTF-8"></script></head> 
- 
-<body> 
 
-  <b>Global Boundary Stratotype Section and Point (<a href="http://en.wikipedia.org/wiki/GSSP" ">GSSP</a>) information retrieved from the <a href="http://resource.geosciml.org/vocabulary/timescale/isc2012.ttl" >ISC2012</a> ontology; <a href="./images/Tutorial_GSSP_portal.pdf">Tutorial of the demo portal</a> </b> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link type="text/css" href="/css/pages.css" media="all" rel="stylesheet">
 
-  <div id="layerSelect" style="position: absolute; top:40px; width:1020px; height:30px;">
-  <select name="LayerSelectOption" onchange="OverlayWMSLayer(this.value);"> 
-    <option value="NoOverlay" selected="selected">No Overlay</option>
-    <option value="BGS625kRA">UK (EPSG:3857)  | BGS 1:625K Bedrock Age</option>
-	<option value="CCOP2MASIA">E- and SE-ASIA (EPSG:900913)  | GSJ CCOP 1:2M Combined Bedrock and Superficial Geology and Age</option>
-	<option value="CHE500kGU">Switzerland (EPSG:900913)  | CHE SGS 1:500K Geological Units</option>
-	<option value="USGS500kCOGL">Colorado State, USA (EPSG:3857)  | Colorado USGS 1:500K Geology - Lithology</option>
-	<option value="USGS500kNVGL">Nevada State, USA (EPSG:3857)  | Nevada USGS 1:500K Geology - Lithology</option>
-	<option value="USGS250kNYGL">New York State, USA (EPSG:3857)  | New York USGS 1:250K Geology - Lithology</option>
-	<option value="USGS250kOKGL">Oklahoma State, USA (EPSG:3857)  | Oklahoma USGS 1:250K Geology - Lithology</option>
-	<option value="USGS500kTXGL">Texas State, USA (EPSG:3857)  | Texas USGS 1:500K Geology - Lithology</option>
-	<option value="USGS250kUTGL">Utah State, USA (EPSG:3857)  | Utah USGS 1:500K Geology - Lithology</option>
-	<option value="BRGM1MSGU">France (EPSG:4326)  | 1GE BRGM 1:1M Surface Geologic Unit</option>
-	<option value="BGR1MGU">Germany (EPSG:4326)  | BGR EN 1:1M Geologic Unit</option>
-	<option value="ISPRA500kGU">Italy (EPSG:4326)  | ITA ISPRA/SGI EN 1:500K Geologic Age</option>
-	<option value="AUS2d5MGUA">Australia (EPSG:4326)  | AUS GA 1:2.5M Geologic Unit - Age</option>
-	<option value="SIGA10MBA">Africa (EPSG:4326)  | Africa SIGAfrique 1:10M Bedrock Age</option>
-<!--	<option value="CGS1MGeoMap">China (EPSG:4326)  | China Geological Survey 1:1M Geological Map (in CN)</option>  -->
-	<option value="CGS5MGeoMap">China (EPSG:4326)  | China Geological Survey 1:5M Geological Map (in CN)</option>
-    <option value="BRGM50MOnshore">World (EPSG:4326)  | BRGM CGMW 1:50M Geological Units Onshore</option>
-  </select>
-  </div>
-  
-  <div id="map_canvas" style="position: absolute; top:70px; width:1020px; height:780px;"></div> 
-  <!--some further work is needed to assign relative position to div 'vis' for the geologic time pie-->
-  <div id="vis" style="position: absolute; left: 1020px; top:50px; overflow: hidden; "></div>
-  
-  <table id="results" style="position: absolute; top:860px; width:1580px;"></table> 
- 
- <!-- Google maps api--> 
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script> 
-  
-  <!-- d3.js for visualization -->    
-  <script language="javascript" src="./d3lib/d3.v2.js"></script>
-  <!-- the geologic time pie -->  
-  <script language="javascript" src="iscwheel.js"></script>
-   
-  <!-- jquery --> 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script> 
-  
-  <!-- jquery min for using in the light box js -->
-  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-  <!-- lightbox - for popup images --> 
-  <script type="text/javascript" src="js/lightbox.js"></script>
-  <!-- wms - for overlaying WMS layers and get feature info --> 
-  <script type="text/javascript" src="js/wms.js"></script>
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>GitHub Pages - Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.</title>
+<meta property="og:title" content="GitHub Pages" />
+<meta name="description" content="Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live." />
+<meta property="og:description" content="Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live." />
+<link rel="canonical" href="https://pages.github.com/" />
+<meta property="og:url" content="https://pages.github.com/" />
+<meta property="og:site_name" content="GitHub Pages" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@github" />
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/D993DA47-B7E1-0A43-8485-F62A343F1C47/main.js" charset="UTF-8"></script><script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "WebSite",
+"name": "GitHub Pages",
+"headline": "GitHub Pages",
+"description": "Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.",
+"url": "https://pages.github.com/"}</script>
+<!-- End Jekyll SEO tag -->
 
-  <script type="text/javascript"> 
-	/* sparql code for queryUrl   additional: (1) sparql endpoint: http://geotime.tw.rpi.edu/fuseki/ds/query? (2) add &output=json in the queryUrl
-///////////note the changes in the URI of prefixes compared to ISC2010///////////////
-///////////note (1) basic:value --> basic:amount////////////////////
-////////////////(2) gtrs:position --> tm:position//////////
-////////////////(3) gts:Age  -->   <http://resource.geosciml.org/ontology/timescale/rank/Age>            
-PREFIX gts: <http://resource.geosciml.org/ontology/timescale/gts-30#> 
-PREFIX gtrs: <http://resource.geosciml.org/ontology/timescale/gtrs-30#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX sam: <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#>
-PREFIX gm: <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#> 
-PREFIX tm: <http://def.seegrid.csiro.au/isotc211/iso19108/2006/temporal#>
-PREFIX basic: <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
- 
-SELECT ?gsspLabel ?primaryGuidingCriterion ?coordinates ?age ?ageUncertainty ?detailedConceptName
-WHERE 
-{
-?base gts:stratotype ?gssp;
-      tm:position ?baseTime.
-?gssp rdfs:label ?gsspLabel;
-      gts:primaryGuidingCriterion ?primaryGuidingCriterion;
-      sam:shape ?gsspLocation.
-?gsspLocation gm:position ?gsspPosition.
-?gsspPosition gm:coordinates ?coordinates.
-?baseTime tm:value ?age.
-OPTIONAL
-{
-?base gtrs:positionalUncertainty ?baseTimeUncertainty.
-?baseTimeUncertainty basic:amount ?ageUncertainty.
-}
-{
-?lowestRankConcept gts:rank <http://resource.geosciml.org/ontology/timescale/rank/Age>;
-                       gtrs:start ?base.
-}
-UNION
-{
-?lowestRankConcept rdfs:label "Ediacaran Period"@en;
-                       gtrs:start ?base.
-}
-UNION
-{
-?lowestRankConcept rdfs:label "Holocene Epoch"@en;
-                       gtrs:start ?base.
-}
-UNION
-{
-?lowestRankConcept rdfs:label "Pridoli Epoch"@en;
-                       gtrs:start ?base.
-}
-?lowestRankConcept skos:prefLabel ?detailedConceptName
-FILTER (lang(?detailedConceptName) = "en" )
-}
-ORDER BY ?age
-	*/
- 
-	//the query gets label, criterion, coordinates, age and ageuncertainty of each gssp (see sparql codes above)
-	//var queryUrl = "http://sparql.tw.rpi.edu/virtuoso/sparql?default-graph-uri=&should-sponge=&query=PREFIX+gts%3A+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fschema%2Fcgi%2Fgts%2F3.0%2F%3E+%0D%0APREFIX+gtrs%3A+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fschema%2Fcgi%2Ftrs%2F3.0%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sam%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19156%2F2011%2Fsampling%2F%3E%0D%0APREFIX+gm%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19107%2F2003%2Fgeometry%2F%3E+%0D%0APREFIX+tm%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19108%2F2006%2Ftemporalobject%2F%3E%0D%0APREFIX+basic%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19103%2F2005%2Fbasictype%2F%3E%0D%0A+%0D%0ASELECT+%3FgsspLabel+%3FprimaryGuidingCriterion+%3Fcoordinates+%3Fage+%3FageUncertainty%0D%0AWHERE+%0D%0A{%0D%0Agraph+%3Chttp%3A%2F%2Fsparql.tw.rpi.edu%2F20120831%2Fisc2010test%3E%0D%0A{%0D%0A%3Fbase+gts%3Astratotype+%3Fgssp%3B%0D%0A++++++gtrs%3Aposition+%3FbaseTime.%0D%0A%3Fgssp+rdfs%3Alabel+%3FgsspLabel%3B%0D%0A++++++gts%3AprimaryGuidingCriterion+%3FprimaryGuidingCriterion%3B%0D%0A++++++sam%3Ashape+%3FgsspLocation.%0D%0A%3FgsspLocation+gm%3Aposition+%3FgsspPosition.%0D%0A%3FgsspPosition+gm%3Acoordinates+%3Fcoordinates.%0D%0A%3FbaseTime+tm%3Avalue+%3Fage.%0D%0AOPTIONAL%0D%0A{%0D%0A%3Fbase+gtrs%3ApositionalUncertainty+%3FbaseTimeUncertainty.%0D%0A%3FbaseTimeUncertainty+basic%3Avalue+%3FageUncertainty.%0D%0A}%0D%0A}%0D%0A}%0D%0AORDER+BY+%3Fage&output=json&debug=on&timeout=";
-    //var queryUrl = "http://sparql.tw.rpi.edu/virtuoso/sparql?query=PREFIX+gts%3A+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fschema%2Fcgi%2Fgts%2F3.0%2F%3E+%0D%0APREFIX+gtrs%3A+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fschema%2Fcgi%2Ftrs%2F3.0%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sam%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19156%2F2011%2Fsampling%2F%3E%0D%0APREFIX+gm%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19107%2F2003%2Fgeometry%2F%3E+%0D%0APREFIX+tm%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19108%2F2006%2Ftemporalobject%2F%3E%0D%0APREFIX+basic%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19103%2F2005%2Fbasictype%2F%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0A+%0D%0ASELECT+%3FgsspLabel+%3FprimaryGuidingCriterion+%3Fcoordinates+%3Fage+%3FageUncertainty+%3FdetailedConceptName%0D%0AWHERE+%0D%0A{%0D%0Agraph+%3Chttp%3A%2F%2Fsparql.tw.rpi.edu%2F20121019%2Fisc2012test%3E%0D%0A{%0D%0A%3Fbase+gts%3Astratotype+%3Fgssp%3B%0D%0A++++++gtrs%3Aposition+%3FbaseTime.%0D%0A%3Fgssp+rdfs%3Alabel+%3FgsspLabel%3B%0D%0A++++++gts%3AprimaryGuidingCriterion+%3FprimaryGuidingCriterion%3B%0D%0A++++++sam%3Ashape+%3FgsspLocation.%0D%0A%3FgsspLocation+gm%3Aposition+%3FgsspPosition.%0D%0A%3FgsspPosition+gm%3Acoordinates+%3Fcoordinates.%0D%0A%3FbaseTime+tm%3Avalue+%3Fage.%0D%0AOPTIONAL%0D%0A{%0D%0A%3Fbase+gtrs%3ApositionalUncertainty+%3FbaseTimeUncertainty.%0D%0A%3FbaseTimeUncertainty+basic%3Avalue+%3FageUncertainty.%0D%0A}%0D%0A{%0D%0A%3FlowestRankConcept+gts%3Arank+gts%3AAge%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0AUNION%0D%0A{%0D%0A%3FlowestRankConcept+rdfs%3Alabel+%22Ediacaran+Period%22%40en%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0AUNION%0D%0A{%0D%0A%3FlowestRankConcept+rdfs%3Alabel+%22Holocene+Epoch%22%40en%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0AUNION%0D%0A{%0D%0A%3FlowestRankConcept+rdfs%3Alabel+%22Pridoli+Epoch%22%40en%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0A%3FlowestRankConcept+skos%3AprefLabel+%3FdetailedConceptName%0D%0AFILTER+%28lang%28%3FdetailedConceptName%29+%3D+%22en%22+%29%0D%0A}%0D%0A}%0D%0AORDER+BY+%3Fage&output=json";  
-	var queryUrl = "http://geotime.tw.rpi.edu/fuseki/ds/query?query=PREFIX+gts%3A+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fontology%2Ftimescale%2Fgts-30%23%3E+%0D%0APREFIX+gtrs%3A+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fontology%2Ftimescale%2Fgtrs-30%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sam%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19156%2F2011%2Fsampling%23%3E%0D%0APREFIX+gm%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19107%2F2003%2Fgeometry%23%3E+%0D%0APREFIX+tm%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19108%2F2006%2Ftemporal%23%3E%0D%0APREFIX+basic%3A+%3Chttp%3A%2F%2Fdef.seegrid.csiro.au%2Fisotc211%2Fiso19103%2F2005%2Fbasic%23%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0A+%0D%0ASELECT+%3FgsspLabel+%3FprimaryGuidingCriterion+%3Fcoordinates+%3Fage+%3FageUncertainty+%3FdetailedConceptName%0D%0AWHERE+%0D%0A{%0D%0A%3Fbase+gts%3Astratotype+%3Fgssp%3B%0D%0A++++++tm%3Aposition+%3FbaseTime.%0D%0A%3Fgssp+rdfs%3Alabel+%3FgsspLabel%3B%0D%0A++++++gts%3AprimaryGuidingCriterion+%3FprimaryGuidingCriterion%3B%0D%0A++++++sam%3Ashape+%3FgsspLocation.%0D%0A%3FgsspLocation+gm%3Aposition+%3FgsspPosition.%0D%0A%3FgsspPosition+gm%3Acoordinates+%3Fcoordinates.%0D%0A%3FbaseTime+tm%3Avalue+%3Fage.%0D%0AOPTIONAL%0D%0A{%0D%0A%3Fbase+gtrs%3ApositionalUncertainty+%3FbaseTimeUncertainty.%0D%0A%3FbaseTimeUncertainty+basic%3Aamount+%3FageUncertainty.%0D%0A}%0D%0A{%0D%0A%3FlowestRankConcept+gts%3Arank+%3Chttp%3A%2F%2Fresource.geosciml.org%2Fontology%2Ftimescale%2Frank%2FAge%3E%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0AUNION%0D%0A{%0D%0A%3FlowestRankConcept+rdfs%3Alabel+%22Ediacaran+Period%22%40en%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0AUNION%0D%0A{%0D%0A%3FlowestRankConcept+rdfs%3Alabel+%22Holocene+Epoch%22%40en%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0AUNION%0D%0A{%0D%0A%3FlowestRankConcept+rdfs%3Alabel+%22Pridoli+Epoch%22%40en%3B%0D%0A+++++++++++++++++++++++gtrs%3Astart+%3Fbase.%0D%0A}%0D%0A%3FlowestRankConcept+skos%3AprefLabel+%3FdetailedConceptName%0D%0AFILTER+%28lang%28%3FdetailedConceptName%29+%3D+%22en%22+%29%0D%0A}%0D%0AORDER+BY+%3Fage&output=json";
-	
-    $.ajax({ 
-      dataType: "jsonp",
-      url: queryUrl,
-      success: function(data) {     
-        
-        // get the table element in this the web page
-        var table = $("#results");              
-        
-        // get the sparql variables from the 'head' of the data.
-        var headerVars = data.head.vars; 
-   
-        // using the vars, make some table headers and add them to the table;
-        var trHeaders = getTableHeaders(headerVars);
-        table.append(trHeaders);  
-        
-        // grab the actual results from the data.                                          
-        var bindings = data.results.bindings;
-                                                 
-        // for each result, make a table row and add it to the table.
-        for(rowIdx in bindings){
-          table.append(getTableRow(headerVars, bindings[rowIdx]));
-        }
-        
-        drawMap(data);
-      }
-    });                              
-     
-     
-    function getTableHeaders(headerVars) {                                
-       var trHeaders = $("<tr></tr>");     
-       for(var i in headerVars) {    
-         trHeaders.append( $("<th>" + headerVars[i] + "</th>") ); 
-       }
-       return trHeaders;
-     }                              
-     
-     function getTableRow(headerVars, rowData) {
-       var tr = $("<tr></tr>");                                 
-       
-       for(var i in headerVars) {             
-         tr.append(getTableCell(headerVars[i], rowData));
-       } 
-       
-       return tr;     
-     }  
-     
-     function getTableCell(fieldName, rowData){
-       var td = $("<td></td>");
-	  
-       var fieldData = rowData[fieldName];
-	    if (fieldData == null) { 	// some vaules of field 'ageUncertainty' are null
-		  td.html("Null"); 
-		  if ( fieldName == 'ageUncertainty' )
-		    td.html("0 Ma"); 
-		}			//
-	   else	{					//
-          td.html( fieldData["value"] );
-		  if ( fieldName == 'age' ) // round the number in 'age' to four decimal digits and turn into string - the float data retrieved from virtuoso triple store have very long decimal digits
-		    td.html( roundNumber(fieldData["value"],4).toString() + ' Ma' );
-		  if ( fieldName == 'ageUncertainty' ) // round the number in 'ageUncertainty' to one decimal digit and turn into string - the float data retrieved from virtuoso triple store have very long decimal digits
-		    td.html( roundNumber(fieldData["value"],1).toString() + ' Ma' );  
-		}
-       return td;      
-     } 
-	 
-	 var infoPopup = new google.maps.InfoWindow; // define infoPopup as a global variable to avoid this: popup a new window for each marker while the previously popup window is not closed 
-	 var gsspMarkers = [];  // an array to store all the gssp markers inside the map
-     var map = new google.maps.Map(document.getElementById("map_canvas")); //define map as a global variable because it is used in iscwheel.js 
-	 function drawMap(data){      
-       // make a map, centred on Manchester
-       var worldCenter = new google.maps.LatLng(0, 0);     
-       var myOptions = {
-         zoom: 2,
-         center: worldCenter,
-		 scaleControl: true,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-       };
-	   /*
-	   {
-			panControl: boolean,
-			zoomControl: boolean,
-			mapTypeControl: boolean,
-			scaleControl: boolean,
-			streetViewControl: boolean,
-			overviewMapControl: boolean
-		}
-	   */
-        map.setOptions(myOptions);
-       // add a marker for each gssp 
-       var bindings = data.results.bindings; 
-       for (var i in bindings) {
- 
-         var gsspData = data.results.bindings[i];
- 
-         var lat = getNorthValue(gsspData["coordinates"]["value"]); 
-         var lng = getEastValue(gsspData["coordinates"]["value"]); 
-         var label = gsspData["gsspLabel"]["value"];
-		 var criterion = gsspData["primaryGuidingCriterion"]["value"];
-		 var age = roundNumber(gsspData["age"]["value"], 4).toString(); //values of datatype float retrieved from Virtuoso triple store are with very long digits after decimal point. here we round them to format with 4 digits after decimal
-		 var unctn; 
-		  if(gsspData["ageUncertainty"] != null) // some vaules of field 'ageUncertainty' are null
-		  unctn = roundNumber(gsspData["ageUncertainty"]["value"], 1).toString();
-		  else
-		  unctn = '0';
-		 var cptName = gsspData["detailedConceptName"]["value"]; 
-		 // seeAlso is a link to an image with detail info of the corresponding gssp
-		 // in isc2010 ontology the name of gssp is associated with the highest concept, e.g., gssp of base Mesozoic 
-		 // on website of Geologic TimeScale Foundation, name of gssp is with lowest concept, e.g. gssp of base Induan (the same gssp as the gssp of base Mesozoic)
-		 // a full list of images about gssp: https://engineering.purdue.edu/Stratigraphy/images/combined/full/
-		 var seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + cptName +'_GSSP_web_June20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		  if (cptName == 'Katian') //a special setting for 'Katian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + cptName +'_GSSP_web_July20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		  if (cptName == 'Rupelian') //a special setting for 'Rupelian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + cptName +'_GSSP__web_June20121.jpg" >' + 'Base of ' + cptName + '</a>';
- 		  if (cptName == 'Famennian') //a special setting for 'Famennian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + 'Famenne' +'_GSSP_web_June20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		  if (cptName == 'Frasnian') //a special setting for 'Frasnian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + 'Frasne' +'_GSSP_web_June20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		  if (cptName == 'Visean') //a special setting for 'Visean' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + 'Visean' +'_GSSP_web_Jun20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		  if (cptName == 'Rhuddanian') //a special setting for 'Rhuddanian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + 'Rhudd' +'_GSSP_web_June20121.jpg" >' + 'Base of ' + cptName + '</a>';		 
-		 
-		  if (cptName == 'Ladinian') //a special setting for 'Ladinian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + cptName +'_GSSP_web_JuJune20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		  if (cptName == 'Piacenzian') //a special setting for 'Piacenzian' due to the special URL of it on that website
-		  seeAlso = 'For details see also: ' + '<a id="gtsName" rel="lightbox" href="https://engineering.purdue.edu/Stratigraphy/images/combined/full/' + 'Piazencian' +'_GSSP_web_June20121.jpg" >' + 'Base of ' + cptName + '</a>';
-		 
-		 var gsspInfo;
-		  if (unctn == '0') //when age uncertainty is '0', there is no need to add an uncertainty value
-		  gsspInfo = '<b>' + label + '</b><br/><br/>' + 'Primary Guiding Criterion: ' + criterion
-						+ '<br/><br/> Age: ' + age + ' Ma (the unit Ma means "millions of years ago")'
-						+ '<br/><br/>' + seeAlso;
-		  else 
-		  gsspInfo = '<b>' + label + '</b><br/><br/>' + 'Primary Guiding Criterion: ' + criterion
-						+ '<br/><br/> Age: ' + age + ' +/- ' + unctn + ' Ma (the unit Ma means "millions of years ago")'
-						+ '<br/><br/>' + seeAlso;
-		 
-		 // make a icon
-		 // var gsspIcon = new google.maps.MarkerImage("gssp.png", new google.maps.Size(42, 21));
-        
- 		 // make a gssp marker 
-         var marker = new google.maps.Marker({
-           position: new google.maps.LatLng( lat, lng ), 
-           icon: "gssp.png",
-		   map: map, 
-           title: label,
-		   html: gsspInfo, // to be used as content in the popup infoWindow
-		   lowestconcept: cptName // to be used as a label to be sent to the geologic time pie visualzation
-         }); 
-	     // use one infowindow 'infoPopup' for all the markers, just change the content inside when change between markers
-		 google.maps.event.addListener(marker, 'click', function () {                
-           infoPopup.setContent(this.html); //here should use 'this' but not 'marker', otherwise it always points to the last marker after the looping
-           infoPopup.open(map, this);
-		   hightlightLabel(this.lowestconcept); // in the geologic time pie, highlight a node related to the clicked gssp
-		   infoPopupWMS.close(); // close pop up window of WMS feature info
-		 });
-		 
-		 google.maps.event.addListener(marker.getMap(), 'click', function() {
-          infoPopup.close(); //click the map area to close the popup window 
-         });
-		 
-		 gsspMarkers.push(marker);
-       }  
-	   
-     }
-	 
-     // ISC2010 coordinates use EPSG4326. EPSG 4326 defines a full coordinate reference system
-	 // 4326 is the EPSG identifier of WGS84
-	 // EPSG 4326 can be understood as latitude and longitude coordinates on the WGS84 reference ellipsoid
-	 
-     // returns north in the isc2010 coordinates
-	 function getNorthValue(coord) {
-	 	var coordsArray = new Array();
-		coordsArray = coord.split(" ");
-		return coordsArray[0];
-	 }
-	 	 
-	 // returns east in the isc2010 coordinates
-	 function getEastValue(coord) {
-	 	var coordsArray = new Array();
-		coordsArray = coord.split(" ");
-		return coordsArray[1];
-	 }
-	 
-	 // round a number, n: number; dec: digits after decimal, if in minus value, digits before decimal
-	 function roundNumber(n,dec) {
-		n = parseFloat(n);
-		if(!isNaN(n)){
-			if(!dec) var dec= 0;
-			var factor= Math.pow(10,dec);
-			return Math.floor(n*factor+((n*factor*10)%10>=5?1:0))/factor;
-		}else{
-			return n;
-		}
-	 }  
-	 
-      
+  </head>
 
-	var WmsServerURL;
-	var WmsLayerName;
-	var listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {});
-	var listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function() {});	
-	var EpsgCode; // EPSG code for projection reference
-	var VersionCode; // version code of WMS service
-	
-	// a source of geologic map WMS: http://portal.onegeology.org/catalogView.jsp
-	// overlay the  WMS layer chosen from the dropbox into the map window
-	function OverlayWMSLayer(layerChosen) {
-	  infoPopup.close();
-	  infoPopupWMS.close();
-	  map.overlayMapTypes.clear();  //clear any currently overlayed WMS layers in the google maps window
-      google.maps.event.removeListener(listenerHandleWmsInfoClose); // remove the wms info listener
-	  google.maps.event.removeListener(listenerHandleWmsInfoOpen); // remove the wms info listener
-	 
- 	  if (layerChosen == "NoOverlay") {
-		map.setOptions({draggableCursor: null});
-		map.setOptions({draggingCursor: null});
-		map.panTo(new google.maps.LatLng(0, 0)); // World in the center
-		map.setZoom(2); 
-		return;
-	  }
-	  
-	  if (layerChosen == "BGS625kRA") {
-	    WmsServerURL = 'http://ogc.bgs.ac.uk/cgi-bin/BGS_Bedrock_and_Superficial_Geology/wms?';
-		WmsLayerName = 'GBR_BGS_625k_BA';
-		EpsgCode = "SRS=EPSG:3857"; //EpsgCode is to be used in ClickForWmsInfoEpsg3857OrEpsg900913()
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://ogc.bgs.ac.uk/cgi-bin/BGS_Bedrock_and_Superficial_Geology/wms?service=WMS&version=1.1.1&request=GetCapabilities
-	
-        var customParams = [
-		    "SRS=EPSG:3857", // note epsg:900913 is the old version of to EPSG:3857
-			"VERSION=1.1.1",
-            "LAYERS=GBR_BGS_625k_BA"
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-			
-		map.panTo(new google.maps.LatLng(55, -4)); // UK in the center
-		map.setZoom(6); 
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	 
-		
-		map.setOptions({draggableCursor: 'help'});
-		map.setOptions({draggingCursor: 'help'});
-	  }
-
-	  if (layerChosen == "CCOP2MASIA") {
-	    WmsServerURL = 'http://ows.geogrid.org/GSJ_CCOP_Combined_Bedrock_and_Superficial_Geology_and_Age/wms?';
-		WmsLayerName = 'EASIA_CCOP_2M_Combined_BLT_SLT_BA';
-		EpsgCode = "SRS=EPSG:900913";  //EpsgCode is to be used in ClickForWmsInfoEpsg3857OrEpsg900913()
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://ows.geogrid.org/GSJ_CCOP_Combined_Bedrock_and_Superficial_Geology_and_Age/wms?service=WMS&version=1.1.1&request=GetCapabilities
-	
-        var customParams = [
-		    "SRS=EPSG:900913", // note epsg:900913 is the old version of to EPSG:3857
-            "VERSION=1.1.1",
-			"LAYERS=EASIA_CCOP_2M_Combined_BLT_SLT_BA"
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-			
-		map.panTo(new google.maps.LatLng(21, 120)); // SE Asia in the center
-		map.setZoom(4); 
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	 
-		
-		map.setOptions({draggableCursor: 'help'});
-		map.setOptions({draggingCursor: 'help'});
-	  }	
-	  
-	  
-	  if (layerChosen == "CHE500kGU") {
-	    WmsServerURL = 'http://wms.ga.admin.ch/SGS_Geol_Tecto/wms?';
-		WmsLayerName = 'CHE_SGS_500k_GeologicalUnits';
-		EpsgCode = "SRS=EPSG:900913";  //EpsgCode is to be used in ClickForWmsInfoEpsg3857OrEpsg900913()
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://wms.ga.admin.ch/SGS_Geol_Tecto/wms?&service=WMS&version=1.1.1&request=GetCapabilities
-	    // NOTE that this wms server (Switzerland) temporarilly does not work on GetFeatureInfo (2012-11-06)
-        var customParams = [
-		    "SRS=EPSG:900913", // note epsg:900913 is the old version of to EPSG:3857
-            "VERSION=1.1.1",
-			"LAYERS=CHE_SGS_500k_GeologicalUnits"
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-			
-		map.panTo(new google.maps.LatLng(46.8, 8.5)); // Switzerland in the center
-		map.setZoom(7); 
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	 
-		
-		map.setOptions({draggableCursor: 'help'});
-		map.setOptions({draggingCursor: 'help'});
-	  }	
+  <body class="home ">
 
 
-	  
-      //Colorado geology - lithology
-	  if (layerChosen == "USGS500kCOGL"){    //*********************
-		WmsServerURL = 'http://mrdata.usgs.gov/services/co?'; //*********************
-		WmsLayerName = 'Colorado_Lithology';  //*********************
-		EpsgCode = "SRS=EPSG:3857";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mrdata.usgs.gov/services/co?service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:3857", 
-            "VERSION=1.1.1",
-			"LAYERS=Colorado_Lithology"  //*********************
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(39, -106)); // CO state in the center   //*********************
-		map.setZoom(7);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }		  
+<section id="hero-spot" class="hero-spot">
+    <a href="/"><img src="/images/logo.svg" alt="GitHub Pages" class="logo" /></a>
 
-	  
-      //Nevada geology - lithology
-	  if (layerChosen == "USGS500kNVGL"){    //*********************
-		WmsServerURL = 'http://mrdata.usgs.gov/services/nv?'; //*********************
-		WmsLayerName = 'Nevada_Lithology';  //*********************
-		EpsgCode = "SRS=EPSG:3857";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mrdata.usgs.gov/services/nv?service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:3857", 
-            "VERSION=1.1.1",
-			"LAYERS=Nevada_Lithology"  //*********************
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(38.5, -116.8)); // CO state in the center   //*********************
-		map.setZoom(7);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }		  	  
-	  
-	  
-      //New York geology - lithology
-	  if (layerChosen == "USGS250kNYGL"){    //*********************
-		WmsServerURL = 'http://mrdata.usgs.gov/services/ny?'; //*********************
-		WmsLayerName = 'New_York_Lithology';  //*********************
-		EpsgCode = "SRS=EPSG:3857";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mrdata.usgs.gov/services/ny?service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:3857", 
-            "VERSION=1.1.1",
-			"LAYERS=New_York_Lithology"  //*********************
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(42.5, -76)); // NY state in the center   //*********************
-		map.setZoom(7);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }	
-  
+    <h1>Websites for you and your projects.</h1>
+    <h2>Hosted directly from your <a href="https://github.com">GitHub repository</a>. Just edit, push, and your changes are live.</h2>
 
-      //Oklahoma geology - lithology
-	  if (layerChosen == "USGS250kOKGL"){    //*********************
-		WmsServerURL = 'http://mrdata.usgs.gov/services/ok?'; //*********************
-		WmsLayerName = 'Oklahoma_Lithology';  //*********************
-		EpsgCode = "SRS=EPSG:3857";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mrdata.usgs.gov/services/ok?service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:3857", 
-            "VERSION=1.1.1",
-			"LAYERS=Oklahoma_Lithology"  //*********************
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(35.3, -98.5)); // NY state in the center   //*********************
-		map.setZoom(7);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }	  
+    <a href="https://help.github.com/pages/" class="help-link">Pages Help</a>
 
+    <div id="slideshow">
+      <img src="/images/slideshow/bootstrap.png" alt="Bootstrap" class="slide active" width="893" />
+    </div>
+</section>
 
-      //Texas geology - lithology
-	  if (layerChosen == "USGS500kTXGL"){    //*********************
-		WmsServerURL = 'http://mrdata.usgs.gov/services/tx?'; //*********************
-		WmsLayerName = 'Texas_Lithology';  //*********************
-		EpsgCode = "SRS=EPSG:3857";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mrdata.usgs.gov/services/tx?service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:3857", 
-            "VERSION=1.1.1",
-			"LAYERS=Texas_Lithology"  //*********************
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(31, -99.5)); // NY state in the center   //*********************
-		map.setZoom(6);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }		  
+<section id="video" class="video">
+  <h1>What is GitHub Pages?</h1>
+  <iframe width="853" height="480" src="https://www.youtube.com/embed/2MsN8gpT6jY?showinfo=0" frameborder="0" allowfullscreen></iframe>
+</section>
 
+<section id="tutorial" class="tutorial">
+  <h1>Ready to get started? Roll vanilla, or generate a site for your project.</h1>
+  <h2>You get one site per GitHub account and organization, <br />and unlimited project sites. Ready? Let’s get started.</h2>
 
-      //Utah geology - lithology
-	  if (layerChosen == "USGS250kUTGL"){    //*********************
-		WmsServerURL = 'http://mrdata.usgs.gov/services/ut?'; //*********************
-		WmsLayerName = 'Utah_Lithology';  //*********************
-		EpsgCode = "SRS=EPSG:3857";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mrdata.usgs.gov/services/ut?service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:3857", 
-            "VERSION=1.1.1",
-			"LAYERS=Utah_Lithology"  //*********************
-        ];
-		
-		//loadWMSEpsg3857OrEpsg900913() is defined in wms.js
-		loadWMSEpsg3857OrEpsg900913(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(39.2, -111.5)); // NY state in the center   //*********************
-		map.setZoom(7);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg3857OrEpsg900913(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }		  	  	  
+  <ul class="tabs">
+    <li><a href="#user-site" class="selected">User or organization site</a></li>
+    <li><a href="#project-site">Project site</a></li>
+  </ul>
 
+  <!-- ### Start of tutorials -->
+  <ul id="user-site" class="tutorial-list wrapper active">
+    <li id="create-repo-step" class="image-right">
+      <h4>Create a repository</h4>
+      <p>Head over to <a href="https://github.com">GitHub</a> and <a data-proofer-ignore="true" href="https://github.com/new">create a new repository</a> named <em>username</em>.github.io, where <em>username</em> is your username (or organization name) on GitHub.</p>
 
-	  
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "BRGM1MSGU"){    //*********************
-		WmsServerURL = 'http://mapsone.brgm.fr/1GEconnector/?'; //*********************
-		WmsLayerName = 'OGE_1M_surface_GeologicUnit';  //*********************
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mapsone.brgm.fr/1GEconnector/?service=WMS&version=1.1.1&request=GetCapabilities
-	
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=OGE_1M_surface_GeologicUnit"  //*********************
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(46, 2)); // France in the center   //*********************
-		map.setZoom(6);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }
+      <p class="details">If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.</p>
+    </li>
 
+    <li class="question">
+      <h4>What git client are you using?</h4>
+      <ul class="tabs">
+        <li><a id="option-terminal" href="#terminal-step-1" class="selected">A terminal</a></li>
+        <li><a id="option-ghfw" href="#setup-in-desktop">GitHub for Windows</a></li>
+        <li><a id="option-ghfm" href="#setup-in-desktop">GitHub for Mac</a></li>
+        <li><a id="option-newuser-w" href="#new-user-step-1">I don't know</a></li>
+      </ul>
+    </li>
 
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "BGR1MGU"){    //*********************
-		WmsServerURL = 'http://www.bgr.de/Service/OneGeology/BGR_EN_Geological_Units/?'; //*********************
-		WmsLayerName = 'DEU_EN_BGR_1M_Geological_Units';  //*********************
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://www.bgr.de/Service/OneGeology/BGR_EN_Geological_Units/?service=WMS&version=1.1.1&request=GetCapabilities
-	    // NOTE that the GetFeatureInfo request temporarilly does not work with this layer (2012-11-06)
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=DEU_EN_BGR_1M_Geological_Units"  //*********************
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(51, 10.5)); // Germany in the center   //*********************
-		map.setZoom(6);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }
+    <li id="new-user-step-1" class="option-newuser-w">
+      <h4>Download GitHub for Windows</h4>
+      <p>GitHub for Windows is a great way to use git and GitHub on Windows.</p>
 
- 	  
-	  
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "ISPRA500kGU"){
-		WmsServerURL = 'http://sgi2.isprambiente.it/wmsconnector/com.esri.wms.Esrimap/oneg_eng?';
-		WmsLayerName = 'ITA_ISPRASGI_EN_500k_GeologicUnit';
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://sgi2.isprambiente.it/wmsconnector/com.esri.wms.Esrimap/oneg_eng?service=WMS&version=1.1.1&request=GetCapabilities
-	
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=ITA_ISPRASGI_EN_500k_GeologicUnit"
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(42, 12)); // Italy in the center
-		map.setZoom(6); 
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }
+      <a class="windows-download" href="https://github-windows.s3.amazonaws.com/GitHubSetup.exe"><span class="icon"></span>Download GitHub for Windows</a>
+
+      <img src="images/dashboard@2x.png" width="1054" alt="GitHub for Windows screenshot" class="full-size" />
+    </li>
+
+    <li class="option-newuser-m">
+      <h4>Download GitHub for Mac</h4>
+      <p>GitHub for Mac is a great way to use git and GitHub on Mac.</p>
+
+      <a class="mac-download" href="https://central.github.com/mac/latest"><span class="icon"></span>Download GitHub for Mac</a>
+
+      <img src="images/ghfm@2x.png" width="1078" alt="GitHub for Mac screenshot" class="full-size" />
+    </li>
+
+    <li id="terminal-step-1" class="option-terminal">
+      <h4>Clone the repository</h4>
+      <p>Go to the folder where you want to store your project, and clone the new repository:</p>
+
+      <div class="terminal">
+        <div class="header"></div>
+        <div class="shell">
+          <p><span class="path">~</span><span class="prompt">$</span>git clone https://github.com/<em>username</em>/<em>username</em>.github.io</p>
+        </div>
+      </div>
+    </li>
+
+    <li id="setup-in-desktop" class="option-ghfm option-ghfw image-right">
+      <h4>Clone the repository</h4>
+      <p>Click the "Set up in Desktop" button. When the GitHub desktop app opens, save the project.</p>
+
+      <p class="details">If the app doesn't open, launch it and clone the repository from the app.</p>
+    </li>
+
+    <li id="setup-in-desktop" class="option-newuser-w option-newuser-m image-right">
+      <h4>Clone the repository</h4>
+      <p>After finishing the installation, head back to GitHub.com and refresh the page. Click the "Set up in Desktop" button. When the GitHub desktop app opens, save the project.</p>
+
+      <p class="details">If the app doesn't open, launch it and clone the repository from the app.</p>
+    </li>
+
+    <li class="option-terminal">
+      <h4>Hello World</h4>
+      <p>Enter the project folder and add an index.html file:</p>
+
+      <div class="terminal">
+        <div class="header"></div>
+        <div class="shell">
+          <p><span class="path">~</span><span class="prompt">$</span>cd <em>username</em>.github.io</p>
+          <p><span class="path">~</span><span class="prompt">$</span>echo "Hello World" > index.html</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="option-ghfm option-ghfw option-newuser-w option-newuser-m">
+      <h4>Create an index file</h4>
+      <p>Grab your favorite text editor and add an index.html file to your project:</p>
+
+      <div class="terminal">
+        <div class="header">index.html</div>
+        <code class="shell">
+          <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;I'm hosted with GitHub Pages.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </code>
+    </li>
+
+    <li class="option-terminal">
+      <h4>Push it</h4>
+      <p>Add, commit, and push your changes:</p>
+
+      <div class="terminal">
+        <div class="header"></div>
+        <div class="shell">
+          <p><span class="path">~</span><span class="prompt">$</span>git add --all</p>
+          <p><span class="path">~</span><span class="prompt">$</span>git commit -m "Initial commit"</p>
+          <p><span class="path">~</span><span class="prompt">$</span>git push -u origin master</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="option-ghfw option-newuser-w">
+      <h4>Commit &amp; sync</h4>
+
+      <p>Enter the repository, commit your changes, and press the sync button.</p>
+
+      <img src="images/sync-windows@2x.png" width="813" alt="GitHub for Windows screenshot" class="full-size" />
+    </li>
+
+    <li class="option-ghfm option-newuser-m">
+      <h4>Commit &amp; sync</h4>
+
+      <p>Enter the repository, commit your changes, and press the sync button.</p>
+
+      <img src="images/sync-mac.png" alt="GitHub for Mac screenshot" class="full-size" />
+    </li>
+
+    <li class="option-all">
+      <h4>…and you're done!</h4>
+      <p>Fire up a browser and go to <strong>http://<em>username</em>.github.io</strong>.</p>
+      <div class="hero-octicon">
+        <span class="mega-octicon octicon-check"></span>
+      </div>
+    </li>
+  </ul>
+  <!-- End of user site tutorial -->
+
+  <!-- Project Site tutorial -->
+  <ul id="project-site" class="tutorial-list wrapper">
+    <li class="question">
+      <h4>Generate a site, or start from scratch?</h4>
+      <p>For Project sites, you have the option to generate a single page website with one of the amazing pre-built themes, or to create a site from scratch.
+      <ul class="tabs">
+        <li><a id="option-generate" href="#generate-step-1" class="selected">Generate a site</a></li>
+        <li><a id="option-vanilla" href="#vanilla-step-1">Start from scratch</a></li>
+      </ul>
+    </li>
+
+    <li id="generate-step-1" class="option-generate">
+      <h4>Repository Settings</h4>
+      <p>Head over to <a href="https://github.com/">GitHub.com</a> and create a new repository, or go to an existing one. <strong>Click on the Settings tab</strong>.</p>
+      <p class="details">For <strong>Project pages</strong>, the <code>gh-pages</code> branch is used to publish your site. That means that you can work with GitHub Pages in the same repository as the project that it's for, without affecting the project itself.</p>
+
+      <img src="images/settings@2x.png" width="489" alt="Settings for a repository" />
+    </li>
+
+    <li class="option-generate">
+      <h4>Automatic Generator</h4>
+      <p>Scroll down to the <strong>GitHub Pages</strong> module. Press the <strong>Launch automatic page generator</strong> button.</p>
+      <img src="images/automatic@2x.png" width="520" alt="Automatic Generator button on GitHub.com, Settings" />
+    </li>
+
+    <li class="option-generate">
+      <h4>Add content</h4>
+      <p>Use the editor to add content to your site. If you already have a <code>README.md</code> in your project, you can import that on the right hand side.</p>
+      <p>When you're done, click <strong>Continue to Layouts</strong>.</p>
+
+      <img class="full-size" src="images/add-content@2x.png" width="681" alt="Add content to your GitHub Pages site" />
+    </li>
+
+    <li class="option-generate">
+      <h4>Pick a theme</h4>
+      <p>Choose between the themes in the carouselle at the top. When you're done, <strong>click the Publish button</strong> on the right hand side.</p>
+
+      <img src="images/choose-layout@2x.png" class="full-size" width="610" alt="Choose layout" />
+    </li>
+
+    <!-- Start of vanilla sub tutorial -->
+    <li id="vanilla-step-1" class="option-vanilla">
+      <h4>Create an index file</h4>
+      <p>Head over to <a href="https://github.com/">GitHub.com</a> and <a data-proofer-ignore="true" href="https://github.com/new">create a new repository</a>, or go to an existing one.
+      <br />Click on the <strong>Create new file</strong> button.</p>
+
+      <img src="images/new-create-file@2x.png" width="720" alt="Create a file in your repository" />
+    </li>
+
+    <li class="option-vanilla">
+      <h4>Hello World</h4>
+      <p>Name the file <code>index.html</code> and type some HTML content into the editor.</p>
+
+      <img src="images/new-index-html@2x.png" width="720" alt="Hello World on GitHub.com" />
+    </li>
+
+    <li class="option-vanilla">
+      <h4>Commit the file</h4>
+      <p>Scroll to the bottom of the page, write a commit message, and commit the new file.</p>
+
+      <img src="images/new-commit-file@2x.png" width="720" alt="Commit the file" />
+    </li>
+
+    <li class="option-vanilla">
+      <h4>Repository Settings</h4>
+      <p><strong>Click on the Settings tab</strong> and scroll down to the GitHub Pages section.
+      <br />Then select the <strong>master branch</strong> source and click on the <strong>Save</strong> button.</p>
+
+      <img src="images/new-source-setting@2x.png" width="733" alt="GitHub Pages Source Setting" />
+    </li>
+
+    <li class="option-all">
+      <h4>…and you're done!</h4>
+      <p>Fire up a browser and go to <strong>http://<em>username</em>.github.io/<em>repository</em></strong>.</p>
+      <div class="hero-octicon">
+        <span class="mega-octicon octicon-check"></span>
+      </div>
+    </li>
+  </ul>
+
+</section>
+<!-- End of tutorial section -->
+
+<section id="next-steps">
+  <h1>Now that you’re up and running, here are a few things you should know.</h1>
+
+  <ul class="next-steps wrapper">
+    <li class="jekyll">
+      <a class="hero-octicon" href="https://help.github.com/articles/using-jekyll-with-pages">
+        <span class="mega-octicon octicon-pencil"></span>
+      </a>
+      <h4><a href="https://help.github.com/articles/using-jekyll-with-pages">Blogging with Jekyll</a></h4>
+      <p>Using <a href="https://jekyllrb.com">Jekyll</a>, you can blog using beautiful Markdown syntax, and without having to deal with any databases. <a href="https://jekyllrb.com/docs/quickstart/">Learn how to set up Jekyll</a>.</p>
+    </li>
+    <li class="custom-urls">
+      <a class="hero-octicon" href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">
+        <span class="mega-octicon octicon-link"></span>
+      </a>
+      <h4><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Custom URLs</a></h4>
+      <p>Want to use your own custom domain for a GitHub Pages site? Just create a file named CNAME  and include your URL. <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Read more</a>.</p>
+    </li>
+    <li class="guides">
+      <a class="hero-octicon" href="https://help.github.com/categories/20/articles">
+        <span class="mega-octicon octicon-book"></span>
+      </a>
+      <h4><a href="https://help.github.com/categories/20/articles">Guides</a></h4>
+      <p>Learn how to create custom 404 pages, use submodules, and <a href="https://help.github.com/categories/20/articles">learn more about GitHub Pages</a>.</p>
+    </li>
+  </ul>
+</section>
+
+<script src="/js/jquery.js"></script>
+<script>window.slides = {"bootstrap":"Bootstrap","yeoman":"Yeoman","facebookdesign":"Facebook Design","foundation":"Foundation","ghtraining":"GitHub Training","adobeos":"Adobe Open Source","jekyllrb":"Jekyll","electron":"Electron","semanticui":"Semantic UI","microsoft":"Microsoft on GitHub"}</script>
+<script src="/js/application.js"></script>
 
 
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "AUS2d5MGUA"){    //*********************
-		WmsServerURL = 'http://www.ga.gov.au/wms/getmap?dataset=geows&'; //*********************
-		WmsLayerName = 'AUS_GA_2500k_BA';  //*********************
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://www.ga.gov.au/wms/getmap?dataset=geows&service=WMS&version=1.1.1&request=GetCapabilities
-	     
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=AUS_GA_2500k_BA"  //*********************
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(-27, 135)); // Australia in the center   //*********************
-		map.setZoom(4);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }	
+<footer class="page-footer">
+  <ul class="site-footer-links right">
+    <li><a href="https://status.github.com/">Status</a></li>
+    <li><a href="https://developer.github.com">API</a></li>
+    <li><a href="https://training.github.com">Training</a></li>
+    <li><a href="https://shop.github.com">Shop</a></li>
+    <li><a href="https://github.com/blog">Blog</a></li>
+    <li><a href="https://github.com/about">About</a></li>
+  </ul>
 
+  <a href="/">
+    <span class="mega-octicon octicon-mark-github"></span>
+  </a>
 
-	  
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "SIGA10MBA"){    //*********************
-		WmsServerURL = 'http://mapdmzrec.brgm.fr/cgi-bin/mapserv?map=/carto/ogg/mapFiles/SIGAfrique_EN_Bedrock_and_Structural_Geology.map&'; //*********************
-		WmsLayerName = 'Africa_SIGAfrique_10M_BedrockAge';  //*********************
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mapdmzrec.brgm.fr/cgi-bin/mapserv?map=/carto/ogg/mapFiles/SIGAfrique_EN_Bedrock_and_Structural_Geology.map&service=WMS&version=1.1.1&request=GetCapabilities
-	    // NOTE that the GetFeatureInfo request temporarilly does not work with this layer (2012-11-06)
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=Africa_SIGAfrique_10M_BedrockAge"  //*********************
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(6, 17)); // Africa in the center   //*********************
-		map.setZoom(3);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }	  
+  <ul class="site-footer-links">
+    <li>&copy; 2016 <span>GitHub</span>, Inc.</li>
+    <li><a href="https://github.com/site/terms">Terms</a></li>
+    <li><a href="https://github.com/site/privacy">Privacy</a></li>
+    <li><a href="https://github.com/security">Security</a></li>
+    <li><a href="https://github.com/contact">Contact</a></li>
+  </ul>
+</footer>
 
-	  /*
-	  //China Geological Survey 1:1M geological map (attributes in Chinese)
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "CGS1MGeoMap"){    //*********************
-		WmsServerURL = 'http://219.142.81.86/igserver/ogc/mapdoc/100wan/WMSDocServer?'; //*********************
-		WmsLayerName = '0:地质体.WP';  //*********************
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://219.142.81.86/igserver/ogc/mapdoc/100wan/WMSDocServer?service=WMS&version=1.1.1&request=GetCapabilities
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=0:地质体.WP",
-			"QUERY_LAYERS=0:地质体.WP",
-			"STYLES="	//this parameter is needed in order to import the image of this layer
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(34, 107)); // China in the center   //*********************
-		map.setZoom(4);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  } */	  
-  
-	  //China Geological Survey 1:5M geological map (attributes in Chinese)
-      // this layer uses projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
- 	  if (layerChosen == "CGS5MGeoMap"){    //*********************
-		WmsServerURL = 'http://219.142.81.85/arcgis/services/MAS12P51000011/MapServer/WMSServer?'; //*********************
-		WmsLayerName = '0';  //*********************
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://219.142.81.85/arcgis/services/GeomapM5/MapServer/WMSServer?service=WMS&version=1.1.1&request=GetCapabilities
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=0",
-			"QUERY_LAYERS=0",
-			"STYLES="	//this parameter is needed in order to import the image of this layer
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(34, 107)); // China in the center   //*********************
-		map.setZoom(4);   //*********************
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }	  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  
-	  // the BRGM 50M (world geology) Onshore WMS layer only supports projection reference EPSG:4326
-      // so the loaded layer image cannot match precisely with google maps (EPSG:3857)
-      // We  left this here (on 2012-11-06)to show the problem and as a candidate for further works	  
-	  if (layerChosen == "BRGM50MOnshore"){
-		WmsServerURL = 'http://mapdmzrec.brgm.fr/cgi-bin/mapserv54?map=/carto/ogg/mapFiles/CGMW_Bedrock_and_Structural_Geology.map&';
-		WmsLayerName = 'World_CGMW_50M_GeologicalUnitsOnshore';
-		EpsgCode = "SRS=EPSG:4326";
-		VersionCode = "VERSION=1.1.1";
-		// through getCapabilities we can see which EPSG the WMS server supports
-		// http://mapdmzrec.brgm.fr/cgi-bin/mapserv54?map=/carto/ogg/mapFiles/CGMW_Bedrock_and_Structural_Geology.map&service=WMS&version=1.1.1&request=GetCapabilities
-	
-        var customParams = [
-		    "SRS=EPSG:4326", 
-            "VERSION=1.1.1",
-			"LAYERS=World_CGMW_50M_GeologicalUnitsOnshore"
-        ];
-		
-		//loadWMSEpsg4326() is defined in wms.js
-		loadWMSEpsg4326(map, WmsServerURL, customParams);
-		
-		map.panTo(new google.maps.LatLng(0, 0)); // World in the center
-		map.setZoom(2); 
-		
-		listenerHandleWmsInfoClose = google.maps.event.addListener(map, 'click', function() {
-			infoPopupWMS.close(); //click the map area to close the popup WMS feature info window
-		});
-		listenerHandleWmsInfoOpen = google.maps.event.addListener(map, 'click', function(event) {
-			ClickForWmsInfoEpsg4326(event.latLng);
-		});	
-		
-		map.setOptions({draggableCursor: 'help'});	
-		map.setOptions({draggingCursor: 'help'});		
-	  }
-	}
-  </script> 
+  ga('create', 'UA-3769691-40', 'github.com');
+  ga('send', 'pageview');
+</script>
+
 </body>
+</html>
+

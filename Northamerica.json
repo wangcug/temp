@@ -1,0 +1,456 @@
+
+      	{
+           "name":"Phanerozoic", "colour":"#9AD9DD", "base":541, "top":0 ,
+              "children":[
+                { 
+                	"name":"Paleozoic", "colour":"#99C08D", "base":541,"top":252.2 ,
+                	    "children":[
+                         {
+                         	"name": "Cambrian", "colour": "#7FA056", "base": 541, "top": 485.4,
+                         	   "children":[
+                                {
+                                	"name": "Begadean", "colour": "#8CB06C", "base": 541,"top": 520.1
+                                },
+
+                                {	"name": "Waucoban", "colour":"#99C078", "base": 520.1, "top": 511.1,
+                                	   "children":[
+                                         {
+                                         	"name": "Montezuman", "colour": "#A6C583", "base":520.1, "top":515.4
+                                         },
+                                         {
+
+                                         	"name": "Dyeran", "colour":"#B3CA8E", "base":515.4,"top":511.1
+
+                                         }
+                                     ]
+                                },
+                                {
+                                   	 "name":"Lincolnian", "colour":"#A6CF86","base":511.1,"top":497,
+                                   	     "children":[
+                                   	    {
+                                   	   		"name":"Delamaran", "colour":"#B3CA8E","base":511.1,"top":506.8
+
+                                   	   	},
+                                   	   	{
+                                   	   		"name":"Topazan", "colour":"#B3D492","base":506.8, "top":504.5
+
+                                   	   	},
+                                   	   	{
+
+                                   	   		"name":"Marjuman", "colour":"#BFD99D","base":504.5,"top":497
+                                   	   	}
+
+                                   	   ]
+                                },
+                                {
+                                   		"name":"Millardan", "colour":"#B3E095","base":497,"top":486.7,
+                                   		"children":[
+                                   			{
+                                   				"name":"Steptoean", "colour":"#B3E095","base":497,"top":493.0
+
+                                   			},
+                                   			{
+                                   				"name":"Sunwaptan", "colour":"#D9F0BB","base":493.0, "top":486.7
+                                   			}
+
+                                   		]
+                                },  
+                                {
+
+                                    	"name":"Ibexian", "colour":"#1A9D6F" , "base":486.7, "top":470.4,    
+                                    	"children": [
+                                            {
+                                            	"name":"Skullrockian", "colour":"#33A97E","base":486.7, "top":480.2
+                                            }
+                                    	]
+                                    
+                                }
+                                    
+                                 ]
+
+                         },
+
+                         	  
+                         
+                         {
+                         	"name":"Ordovician","colour":"#009270","base":486.7,"top":443.4,
+                                "children":[
+                                	{
+                                		"name":"Ibexian", "colour":"#1A9D6F", "base":486.7, "top":470.4,   
+                                    	"children": [
+                                            {
+                                            	"name":"Skullrockian", "colour":"#33A97E","base":486.7, "top":480.2
+                                            },
+                                            {
+                                            	"name":"Stairsian","colour":"#38ab81","base":480.2, "top":479.6
+                                            },
+                                            {
+                                            	"name":"Tulean", "colour":"#3DAD84","base":479.6, "top":475.1
+
+                                            },
+                                            {
+                                            	"name":"Blackhillsian","colour":"#41B087","base":475.1,"top":470.4
+                                            }
+                                    	]
+                                	},
+                                	{
+                                		"name":"Whiterockian","colour":"#4DB47E","base":470.4,"top":456.7,
+                                		"children":[
+                                			{
+                                				"name":"Rangerian","colour":"#66C092","base":470.4,"top":468.8
+
+                                			},
+                                			{
+                                				"name":" Not distinguish","colour":"#6ec395","base":468.8,"top":456.7
+
+                                			}
+
+
+
+                                		]
+                                	},
+                                	{
+                                		"name":"Mohawkian","colour":"#66bf88","base":456.7,"top":451,
+                                		"children":[
+                                			{
+                                				"name":"Turinian","colour":"#76c698","base":456.7,"top":453.9
+
+                                			},
+                                			{
+                                				"name":"Chatfieldian","colour":"#7ec99b","base":453.9,"top":451
+                                			}
+
+
+
+                                		]
+                                	},
+                                	{
+                                		"name":"Cincinnatian","colour":"#7FCA93","base":451,"top":443.4,
+                                		"children":[
+                                			{
+                                				"name":"Edenian","colour":"#86cc9e","base":451,"top":449.8
+
+                                			},
+                                			{
+                                				"name":"Maysvillian","colour":"#8ecfa1","base":449.8,"top":448.9
+                                			},
+                                			{
+                                				"name":"Richmondian","colour":"#8ecfa1","base":448.9,"top":445.3
+
+                                			},
+                                			{
+                                				"name":"Gamachian","colour":"#9ed6a7","base":445.3,"top":443.4
+
+                                			}
+
+
+                                		]
+                                	}
+
+                                ]
+                         },
+
+                         {
+                         	"name":"Silurian","colour":"#B3E1B6","base":443.4,"top":419.2,
+                         		"children":[
+                         		{    "name":"", "colour":"#ffffff",
+                         			"children":[
+                         				{
+                         					"name":"Medinan","colour":"#A6DCB5","base":443.4,"top":440
+                         				},
+                         				{
+                         					"name":"Niagaran","colour":"#BFE6C3","base":440,"top":425.6
+                         				},
+                         				{
+                         					"name":"Cayugan", "colour":"#D9F0DF","base":425.6,"top":419.2
+                         				}
+                         			]
+
+                         		}
+
+                         	]
+
+                         },
+
+
+                         {
+                         	"name":"Devonian","colour":"#CB8C37","base":419.2,"top":359.9,
+                         	   "children":[
+                         		{       "name":"", "colour":"#ffffff",
+                         			"children":[
+                         				{
+                         					"name":"Ulsterian","colour":"#E5C468","base":419.2,"top":387.7 
+
+                         				},
+                         				{
+                         					"name":"Erian","colour":"#E5C468","base":387.7 ,"top":384.8
+                         				},
+                         				{
+                         					"name":"Senecan","colour":"#F2EDAD","base":384.8,"top":368.4
+
+                         				},
+                         				{
+                         					"name":"Chatauquan","colour":"#F2EDC5","base":368.4,"top":359.9
+                         				}
+
+
+                         			]
+                         		}
+
+                         	 ]
+                         },
+
+                         {
+                         	"name":"Carboniferous","colour":"#67A599","base":359.9,"top":298.9,
+                         	 "children":[
+                         	 	{
+                         	 	      "name":"", "colour":"#ffffff",                        
+                         	 		  "children":[
+                         	 		  	{
+                         	 		  		"name":"Kinderhookian","colour":"#8CB06C","base":359.9,"top":351.7
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Osagean","colour":"#99b46c","base":351.7,"top":343.4
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Meramecian","colour":"#A6B96C","base":343.4,"top":334.9
+
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Chesterian","colour":"#BFC26B","base":334.9,"top":298.9
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Morrowan","colour":"#99C2B5","base":359.9,"top": 323.2
+
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Atokan","colour":"#C7CBB9","base": 323.2,"top":311.8
+
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Desmoinesian","colour":"#BFD0C5","base":311.8,"top":305.8
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Missourian","colour":"#CCD4C7","base":305.8,"top":303.8
+
+                         	 		  	},
+                         	 		  	{
+                         	 		  		"name":"Virgilian","colour":"#BFD0BA","base":303.8,"top":298.9
+                         	 		  	}
+
+
+                         	 		  ]
+                         	 	}
+
+
+                         	 ]
+                         },
+                         {
+
+                         	"name":"Permian","colour":"#F04028","base":298.9,"top":259.9 ,
+                         	   "children":[
+                                {
+                                    "name":"Woolfcampian","colour":"#EF5845", "base":298.9, "top":282.0,
+                                       "children":[
+                                        {
+                                            "name":"Nealian","colour":"#E36350","base":298.9, "top":295.6
+                                        },
+                                        {
+                                            "name":"Lenoxian","colour": "#E36F5C","base":295.6, "top":282.0
+                                        }
+
+
+                                       ]                                
+                                },
+                                {
+                                    "name":"Leonardian","colour":"#db5845","base":282.0, "top":272.3,
+                                       "children":[
+                                        {
+                                            "name":"Hessian","colour":"#E37B68","base":282.0, "top":275.6
+                                        },
+                                        {
+                                            "name":"Cathedralian","colour":"#E38776","base":275.6, "top":272.3
+                                        }
+
+
+                                       ]
+                                },
+
+                         	   	{
+                         	   		"name":"Guadalupian", "colour":"#FB745C","base":272.3,"top":259.9 ,
+                         	     	  "children": [
+                         	     	  	{
+                         	     	  		"name":"Roadian","colour":"#FB8069","base":272.3,"top":268.8 
+
+                         	     	  	},
+                         	     	  	{
+                         	     	  		"name":"Wordian","colour":"#FB8D76","base":268.8,"top":265.1 
+
+                         	     	  	},
+                         	     	  	{
+                         	     	  		"name":"Capitanian","colour": "#FB9A85","base":265.1,"top":259.9 
+                         	     	  	}
+
+
+
+                         	     	    ]                        
+
+                         	    },
+                         	    {
+                         	    	"name":"Ochoan","colour":"#FCB4A2","base":259.9,"top":259.4,
+                         	    	    "children":[
+                         	    	    	{
+                         	    	    		"name":"Ochoan","colour":"#FCB4A2","base":259.9,"top":259.4
+                         	    	    	}
+
+                         	    	    ]
+                         	    }
+
+
+                         	   ]
+                         }
+                         
+                      
+                      
+
+
+                     ]
+
+                },
+                {
+                    "name":"Mesozoic","colour":"#67C5CA","base":252.2,"top":66,
+                      "children":[
+                       {
+                            "name":"Cretaceous","colour":"#7FC64E", "base":145, "top":66,
+                              "children":[
+                                {
+                                    "name":"Coahulian","colour":"#8CCD60","base":145, "top":128.1
+                                },
+                                {
+                                    "name":"Comanchean", "colour":"#BFE48A", "base":128.1,"top":100.5
+                                },
+                                {
+                                    "name":"Gulfian","colour":"#D9EF74","base":100.5,"top":66
+                                }
+
+                              ] 
+                         }
+                     ]
+
+
+                },
+                {
+                    "name":"Cenozoic","colour":"#F2F91D","base":66,"top":0,
+                      "children":[
+                           {
+                            "name":"Paleogene", "colour":"#FD9A52","base":66, "top":23.03,
+                              "children":[
+                               { "name":"","colour":"#ffffff",
+                              "children":[
+                                {
+                                    "name":"Ynezian","colour":"#FDB462","base":62.1, "top":56.1
+                                },
+                                {
+                                    "name":"Bulitian","colour":"#FEBF65", "base":56.1, "top":52.9
+                                },
+                                {
+                                    "name":"Penutian","colour":"#FDBF6F","base":52.9, "top":50.6
+                                },
+
+                                {
+                                    "name":"Ulatisian","colour":"#FCA773", "base":50.6, "top":47.4
+                                },
+                                {
+                                    "name":"Narizian","colour":"#FCB482","base":47.4,"top":35.2
+                                },
+                                {
+                                    "name":"Refugian","colour":"#FDCDA1", "basse":35.2,"top":33.5
+                                },
+                                {
+                                    "name":"Zemorrian","colour":"#FED99A", "base":33.5,"top":22.0
+                                }
+
+
+                                ]
+                             }
+                             ]
+
+
+                         },
+                        {
+
+                            "name":"Neogene","colour":"#FFE619","base":23.03, "top":2.588 ,
+                              "children":[
+                                {
+                                    "name":"","colour":"#ffffff",
+                                      "children":[
+                                        {
+                                            "name":"Zemorrian","colour":"#FED99A", "base":33.5,"top":22.0
+                                        },
+                                        {
+                                            "name":"Saucesian","colour":"#FFFF33","base":22.0,"top":16.5
+
+                                        },
+                                        {
+                                            "name":"Relizian","colour":"#FFFF41","base":16.5,"top":15.5
+                                        },
+                                        {
+                                            "name":"Luisian","colour":"#FFFF4D","base":15.5, "top":13.5
+                                        },
+                                        {
+                                            "name":"Mohnian","colour":"#FFFF59","base":13.5,"top":7.5
+                                        },
+                                        {
+                                            "name":"Delmontian","colour":"#FFFF66","bese":7.5,"top":2.9
+                                        },
+                                        {
+                                            "name":"Repettian","colour":"#FFFF73","base":2.9,"top":2.2
+                                        }
+                                        
+
+                                      ]
+
+                                }
+
+                              ]
+                         },
+                       
+
+                         {
+
+                            "name":"Quaternary","colour":"#F9F97F","base":2.588, "top":0 ,
+                              "children":[
+                                {
+                                    "name":"","colour":"#ffffff",
+                                      "children":[
+                                        
+                                        {
+                                            "name":"Repettian","colour":"#FFFF73","base":2.9,"top":2.2
+                                        },
+                                        {
+                                            "name":"Venturian","colour":"#FFFFB3","base":2.2,"top":1.9
+                                        },
+                                        {
+                                            "name":"Wheelerian","colour":"#FFFFBF","base":1.9,"top":0
+                                        
+                                        }
+
+                                      ]
+
+                                }
+
+                              ]
+                         }
+                            
+                         
+                     ]
+
+
+                }
+
+
+              ]
+
+      	}
+
+   

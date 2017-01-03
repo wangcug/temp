@@ -13,7 +13,8 @@
       "oid":2,
       "typ":"int",
       "nam":"Paleozoic",
-      "lv1":2,"pid":1,
+      "lv1":2,
+      "pid":1,
       "col":"#99C08D",
       "lag":252.2,
       "eag":541
